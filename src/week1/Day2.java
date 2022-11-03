@@ -96,8 +96,10 @@ class Test{
     }
 
     public static void main(String[] args) {
-        new Test();
-        //System.gc();
+        Test t = new Test();
+        t = new Test();
+
+        System.gc();
     }
 }
 
