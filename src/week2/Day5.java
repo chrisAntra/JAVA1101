@@ -89,9 +89,9 @@ public class Day5 {
  * Executors,ThreadPoolExecutor
  *           ScheduleThreadPoolExecutor
  *           ForkJoinPool
- *           [1,2,3,4,5]-> [1,2]   [2,4] -> [2,4,6,8,10]
- *                         [3,4]   [6,8]
- *                         [5]     [10]
+ *           [1,2,3,4,5]-> [1,2] ->  [2,4] -> [2,4,6,8,10]
+ *                         [3,4] ->  [6,8]
+ *                         [5]   ->  [10]
  */
 
 /**
@@ -304,7 +304,7 @@ class TestStream {
         list.add(Arrays.asList(5,6));
         System.out.println(list);
         //Stream(list(1,2) ,(3,4),(5,6)) ->stream(1,2, 3,4,5,6)
-        List<Integer> list1 = list.stream().flatMap((eleList)->{return eleList.stream();}).collect(Collectors.toList());
+        List<Integer> list1 = list.parallelStream().flatMap((eleList)->{return eleList.stream();}).collect(Collectors.toList());
         System.out.println(list1);
         //.collect(Collectors.toList());
         //System.out.println(list);
